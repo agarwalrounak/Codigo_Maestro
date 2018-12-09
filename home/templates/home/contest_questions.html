@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'home/assets/css/header.css' %}" />
+</head>
+<style>
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 29px 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 6px 4px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+
+    color: white;;
+    background-color: #5D6D7E;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.button1:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #5D6D7E;
+
+}
+
+.button2 {
+    background-color: #28B463;
+    color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.button2:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #28B463;
+}
+
+.button3 {
+    background-color: #3498DB;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.button3:hover {
+        background-color: white;
+    color: black;
+    border: 2px solid #3498DB;
+}
+
+.button4:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #884EA0;
+}
+
+.button4 {
+    background-color: #884EA0;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+
+
+}
+
+.button5:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #F1C40F;
+}
+
+.button5 {
+    background-color: #F1C40F;
+    color: white;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.button6:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #E67E22;
+}
+
+.button6 {
+    background-color: #E67E22;
+    color: white;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.button7:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #C0392B;
+}
+
+.button7 {
+    background-color: #C0392B;
+    color: white;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+
+}
+</style>
+<body style="background-color: #424949;">
+
+
+
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header" >
+                  <a class="navbar-brand" href="{% url 'home:details' %}" style="font-size: 150%; color:white; text-decoration: none;">Codigo Maestro</a>
+                    <a class="navbar-brand" href="#" style="font-size: 110%; color:white; text-decoration: none">by coders_sacred</a>
+                </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.codechef.com/users/{{username}}" target="_blank" style="font-size: 110%; color:white; text-decoration: none">Hello! {{usernameR}}</a></li>
+                    <li ><a href="{% url 'home:details' %}" style="font-size: 110%; color:white; text-decoration: none">Home</a></li>
+                  <li><a href="{% url 'home:logout' %}" style="font-size: 110%; color:white; text-decoration: none"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
+
+
+<img src="{% static 'home/images/winner.png' %}" alt="" height="16%" width="16%" style="margin-right: 42%; margin-left: 42% ; margin-top: 2em;">
+
+<form action="{% url 'home:problems' %}" method="post" class=center">
+    {% csrf_token %}
+    <input class="button button7" name="Value" type="submit" value="7 Star"> </input>
+    <input class="button button6" name="Value" type="submit" value="6 Star"> </input>
+    <input class="button button5" name="Value" type="submit" value="5 Star"> </input>
+    <input class="button button4" name="Value" type="submit" value="4 Star"> </input>
+    <input class="button button3" name="Value" type="submit" value="3 Star"> </input>
+    <input class="button button2" name="Value" type="submit" value="2 Star"> </input>
+    <input class="button button1" name="Value" type="submit" value="1 Star"> </input>
+
+</form>
+</body>
+</html>

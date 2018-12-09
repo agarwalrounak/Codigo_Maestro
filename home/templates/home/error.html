@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+
+
+
+<head>
+		<title>Codigo Maestro</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="{% static 'home/assets/css/details.css' %}" />
+
+	</head>
+
+<body>
+
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header" >
+                  <a class="navbar-brand" href="{% url 'home:details' %}" style="font-size: 150%; color:white; text-decoration: none;">Codigo Maestro</a>
+                    <a class="navbar-brand" href="#" style="font-size: 110%; color:white; text-decoration: none">by coders_sacred</a>
+                </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.codechef.com/users/{{username}}" target="_blank" style="font-size: 110%; color:white; text-decoration: none">Hello! {{usernameR}}</a></li>
+                    <li ><a href="{% url 'home:details' %}" style="font-size: 110%; color:white; text-decoration: none">Home</a></li>
+                  <li><a href="{% url 'home:logout' %}" style="font-size: 110%; color:white; text-decoration: none"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
+
+<div class="alert alert-danger" style="position:fixed; top: 50%; width: 50%; margin-left:25%; margin-right:25%">
+    <strong>Alert! </strong> {{error}}
+</div>
+
+
+
+</body>
+</html>

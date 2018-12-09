@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+{% load static %}
+
+
+<html>
+	<head>
+		<title>Codigo Maestro</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="{% static 'home/assets/css/main.css' %}">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<div class="logo" style="font-size: 110%"><a href="{% url 'home:index' %}">Codigo maestro</a> <span style="font-size: 90%; color:rgb(200,200,200)">by coders_sacred</span></div>
+
+			</header>
+
+
+			<section id="banner" data-video="../../static/home/images/banner">
+
+
+				<div class="inner">
+					<h1 style="line-height: 80%">Codigo Maestro</h1>
+					<!--<h2 style="text-transform: lowercase;"><font color="white">The ultimate CodeChef assisstant</font></h2>-->
+					<p><font color="white">The ultimate CodeChef assisstant</font><br/>An application of the members, by the members, for the members <br/>of the competitive programming community  <br ><br>
+					<a href="{{authorize_url}}?response_type=code&client_id={{client_id}}&state=xyz&redirect_uri={{callback_uri}}" class="button special scrolly">Get Started</a>
+				</div>
+			</section>
+
+
+			<!-- Scripting for video -->
+			<script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/util.js' %}"></script>
+			<script src="{% static 'home/assets/js/main.js' %}"></script>
+
+	</body>
+</html>

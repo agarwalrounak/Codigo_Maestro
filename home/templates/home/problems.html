@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'home/assets/css/main.css' %}" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+    ::placeholder{
+    color: white;
+    font-size: 1em;
+    }
+</style>
+<body style="background-color:#424949 ">
+
+
+<!-- Navigation Bar -->
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header" >
+                  <a class="navbar-brand" href="{% url 'home:details' %}" style="font-size: 150%; color:white; text-decoration: none;">Codigo Maestro</a>
+                    <a class="navbar-brand" href="#" style="font-size: 110%; color:white; text-decoration: none">by coders_sacred</a>
+                </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.codechef.com/users/{{username}}" target="_blank" style="font-size: 110%; color:white; text-decoration: none">Hello! {{usernameR}}</a></li>
+                    <li ><a href="{% url 'home:details' %}" style="font-size: 110%; color:white; text-decoration: none">Home</a></li>
+                  <li><a href="{% url 'home:logout' %}" style="font-size: 110%; color:white; text-decoration: none"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
+
+
+<center><h3 style="margin-top: 1%"><font color="white">Practice Problems For {{type}} Users</font></h3></center>
+<input class="form-control" id="myInput" type="text" placeholder="Search..." style="color: white; width:70%;  margin-left:15%; margin-right: 15%;" >
+
+  <br>
+
+    <table align="center" style="width:70%; height: auto; margin-left:15%; margin-right: 15%; background-color: #424242"><thead>
+    <tr style="background-color:#F2F2F2;">
+
+      <th style="padding:5px"><font color="#424242"><b>CODE</b></font></th>
+        <th style="padding:5px"><font color="#424242"><b>PROBLEM NAME</b></font></th>
+      <th style="padding:5px"><font color="#424242"><b>SUBMISSIONS</b></font></th>
+      <th style="padding:5px"><font color="#424242"><b>ACCURACY</b></font></th>
+
+  </tr>
+  </thead>
+     <tbody id="myTable">
+    {% for i in data %}
+    <tr>
+        {% for key,value in i.items %}
+
+            {% ifequal key 'problemCode' %}
+        <td><font color="white"><a href="https://www.codechef.com/problems/{{ value }}" target="_blank" style="color: white">{{ value }}</a></font></td>
+            {% else %}
+        <td><font color="white">{{ value }}</font></td>
+            {% endifequal %}
+
+        {% endfor %}
+    </tr>
+        {% endfor %}
+     </tbody>
+</table>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+
+
+{% load static %}
+<html>
+	<head>
+		<title>Codigo Maestro</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="{% static 'home/assets/css/details.css' %}" />
+
+	</head>
+	<style>
+
+		input::-webkit-input-placeholder {
+color: red !important;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: red !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: red !important;
+}
+
+input:-ms-input-placeholder {
+color: red !important;
+}
+
+
+	</style>
+
+	<body id="top">
+
+			<!-- Navigation bar -->
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header" >
+                  <a class="navbar-brand" href="{% url 'home:details' %}" style="font-size: 150%; color:white; text-decoration: none;">Codigo Maestro</a>
+                    <a class="navbar-brand" href="#" style="font-size: 110%; color:white; text-decoration: none">by coders_sacred</a>
+                </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.codechef.com/users/{{username}}" target="_blank" style="font-size: 110%; color:white; text-decoration: none">Hello! {{usernameR}}</a></li>
+                    <li ><a href="{% url 'home:details' %}" style="font-size: 110%; color:white; text-decoration: none">Home</a></li>
+                  <li><a href="{% url 'home:logout' %}" style="font-size: 110%; color:white; text-decoration: none"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
+
+
+
+
+			<!-- Main -->
+
+			<!--<div class="blur"></div>-->
+				<div id="main" >
+					<div class="inner">
+
+					<!-- Boxes -->
+						<div class="thumbnails">
+
+							<div class="box">
+								<img src="{% static 'home/images/pic01.jpg' %}" alt="" height="48%" width="100%"/>
+								<div class="inner">
+									<h3>Codechef profile Comparator</h3>
+									<p>Ever wondered to compare your Codechef profile with other user at one go? Chef is up with a new feature where you can get all the data at one place.</p>
+									<a href="#" class="button fit" id="compare">Let's Compare!</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<img src="{% static 'home/images/pic02.jpg' %}" alt="" height="48%" width="100%"/>
+								<div class="inner">
+									<h3>Problems sorted on rating basis</h3>
+									<p> Ever wished to become an expert in coding? Do it in a systematic way to reach the ultimate 7 star rating from your current rating.</p>
+									<a href="{% url 'home:rating' %}" class="button style2 fit">Let's Practice!</a>
+								</div>
+							</div>
+
+							<div class="box">
+								<img src="{% static 'home/images/pic03.jpg' %}" alt="" height="48%" width="100%"/>
+								<div class="inner">
+									<h3>User-cum-institution ranklist</h3>
+									<p>Have you ever tried finding out your position after the contest in the ranklist of some other Institute. If not then you are jsut a button away.</p>
+									<a href="#" class="button style3 fit" id="contact">Know Your Standing!</a>
+
+								</div>
+
+							</div>
+
+
+							<!-- ranking form -->
+                          <div id="contactForm">
+                              <button id="X" style="position: absolute;
+													background: red;
+													color: white;
+													top: 5px;
+													right: 5px;">X</button>
+                                <h1><font color="black" size="5px">EAT SLEEP CODE</font></h1>
+                                <small><font color="black">Check where you stand in other Institute's ranklist</font></small>
+
+                                    <form action="{% url 'home:rankings' %}" method="post">
+                                      {% csrf_token %}
+                                      <input  type="text" name="institute" placeholder="Institute's Name" required />
+                                      <input  type="text" name="contest" placeholder="contestCode"  required />
+                                      <input class="formBtn" type="submit" value="Ranking" />
+                                    </form>
+                            </div>
+
+                            <!-- compare form -->
+
+
+                            <div id="contactFormcompare">
+                              <button id="Y" style="position: absolute;
+													background: red;
+													color: white;
+													top: 5px;
+													right: 5px;">X</button>
+                                <h1><font color="black" size="5px">EAT SLEEP CODE</font></h1>
+                                <small><font color="black">Compare with the other user</font></small>
+
+                                    <form action="{% url 'home:comparator' %}" method="post">
+                                      {% csrf_token %}
+                                      <input  type="text"  name="user1" placeholder="Username1"  required />
+                                      <input  type="text"  name="user2" placeholder="Username2" required />
+										{% if errorc %}
+										<h4 style="font-color: black">{{errorc}}</h4>
+										{% endif %}
+                                      <input class="formBtn" type="submit" value="Compare" />
+                                    </form>
+                            </div>
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+		<!-- Scripts -->
+			<script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
+            <script src="{% static 'home/assets/js/forms.js' %}"></script>
+			<script src="{% static 'home/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'home/assets/js/util.js' %}"></script>
+			<script src="{% static 'home/assets/js/main.js' %}"></script>
+
+
+
+			<!-- Script for forms -->
+<script>
+		$( "a#contact" ).click(function() {
+			$( "div.box" ).addClass( "blur" );
+			$( "div.box" ).addClass( "disabledView" );
+		});
+
+		$( "a#compare" ).click(function() {
+			$( "div.box" ).addClass( "blur" );
+			$( "div.box" ).addClass( "disabledView" );
+		});
+
+		$( "button#X" ).click(function() {
+			$( "div.box" ).removeClass( "blur" );
+			$('#contactForm').fadeToggle();
+			 $( "div.box" ).removeClass( "disabledView" );
+		});
+
+		$( "button#Y" ).click(function() {
+			$( "div.box" ).removeClass( "blur" );
+			$('#contactFormcompare').fadeToggle();
+			 $( "div.box" ).removeClass( "disabledView" );
+		});
+
+</script>
+
+	</body>
+</html>
+

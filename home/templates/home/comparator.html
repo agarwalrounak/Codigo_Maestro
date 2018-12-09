@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+
+{% load static %}
+
+
+<html>
+	<head>
+		<title>Codigo Maestro</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'home/assets/css/main.css' %}">
+
+	</head>
+
+    <style>
+        .unique {
+        font-size:110%;
+    }
+
+	.unique [class^=col-] {
+		color:#fff;
+		font-weight: 400;
+	}
+
+	td{
+	    font-weight: 400;
+	    color: white;
+	    text-align: center;
+	}
+    th{
+    font-size: 2em;
+    }
+	.unique .col-xs-4, .rate {
+	    text-align: center;
+	}
+
+    a, h2, h3{
+    color: white;
+    }
+
+	i{
+	font-color: white;
+	align: center;
+	}
+
+    </style>
+
+	<body style= "background-color:#424949">
+
+
+
+        <!-- Navigation bar -->
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header" >
+                  <a class="navbar-brand" href="{% url 'home:details' %}" style="font-size: 150%; color:white; text-decoration: none;">Codigo Maestro</a>
+                    <a class="navbar-brand" href="#" style="font-size: 110%; color:white; text-decoration: none">by coders_sacred</a>
+                </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.codechef.com/users/{{username}}" target="_blank" style="font-size: 110%; color:white; text-decoration: none">Hello! {{usernameR}}</a></li>
+                    <li ><a href="{% url 'home:details' %}" style="font-size: 110%; color:white; text-decoration: none">Home</a></li>
+                  <li><a href="{% url 'home:logout' %}" style="font-size: 110%; color:white; text-decoration: none"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                </ul>
+              </div>
+              </div>
+            </nav>
+
+
+        <div class="container unique" style="background-color: #424242; padding-right: 5%; padding-left: 5%; padding-top: 3%; margin-bottom: 5%; margin-top: 3%;">
+
+
+
+            <center><h2> Profile Comparison Result</h2></center>
+
+
+
+        <div class="row">
+            <div class="col-xs-4" style="font-size:110%">
+                <a href="https://www.codechef.com/users/{{ username1 }}" target="_blank" ><b><font color="white">{{ username1 }}</font></b></a>
+            </div>
+            <div class="col-xs-4">
+                vs.
+            </div>
+            <div class="col-xs-4" style="font-size:110%">
+                <a href="https://www.codechef.com/users/{{ username2 }}" target="_blank" ><b><font color="white">{{ username2 }}</font></b></a>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-6" style="padding-left: 4%; ">
+                <i>{{ username1 }}</i>'s details:
+            </div>
+            <div class="col-xs-6" style="padding-left: 8%; ">
+                <i>{{ username2 }}</i>'s details:
+            </div>
+            <div class="col-xs-6" style="line-height:130%; padding-left: 4%; ">
+                <i class="fa fa-user-circle-o "></i> {{ fullname1 }} <br>
+                <i class="fa fa-briefcase"></i> {{ occupation1 }}, {{ organization1 }} <br>
+                <i class="fa fa-map-marker"></i> {{ city1 }}, {{ state1 }}, {{ country1 }}
+            </div>
+            <div class="col-xs-6" style="line-height:130%; padding-left: 8%; ">
+                <i class="fa fa-user-circle-o "></i> {{ fullname2 }} <br>
+                <i class="fa fa-briefcase"></i> {{ occupation2 }}, {{ organization2 }} <br>
+                <i class="fa fa-map-marker"></i> {{ city2 }}, {{ state2 }}, {{ country2 }}
+            </div>
+        </div>
+
+<br>
+
+        <div class="row">
+            <div class="col-xs-6 " style="padding-left: 4%; ">
+                <i>{{ username1 }}</i>'s rating: <span style="font-weight: bold;">{{ current_rating1 }}</span>
+            </div>
+            <div class="col-xs-6 " style="padding-left: 8%; ">
+                <i>{{ username2 }}</i>'s rating: <span style="font-weight: bold;">{{ current_rating2 }}</span>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 style="text-align:center"> Common Contests </h3>
+            </div>
+        </div>
+
+        <table>
+            <thead align="center">
+            <tr style="background-color:#F2F2F2;">
+                <th style="padding:5px; text-align:center"><font color="#424949"><b>{{ username1 }}'s rank</b></font></th>
+                <th style="padding:5px; text-align:center"><font color="#F2F2F2">heya</font>  </th>
+                <th style="padding:5px; text-align:center"><font color="#424949"><b> {{ username2}}'s rank</b></font></th>
+            </tr>
+            </thead
+
+            {% if common_ranks %}
+                {% for contest, rank1, rank2 in common_ranks %}
+                <tr>
+                    <td>
+                        {{ rank1 }}
+                    </td>
+                    <td>
+                        <a href="https://www.codechef.com/{{ contest }}" target="_blank" >{{ contest }}</a>
+                    </td>
+                    <td>
+                        {{ rank2 }}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>
+                        No common contests
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+
+
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 style="text-align:center"> Number of Problems Solved </h3>
+            </div>
+        </div>
+
+        <table>
+             <thead align="center">
+            <tr style="background-color:#F2F2F2;">
+                <th style="padding:5px; text-align:center"><font color="#424949"><b>{{ username1 }}'s count</b></font></th>
+                <th style="padding:5px; text-align:center"><font color="#F2F2F2">heya</font>  </th>
+                <th style="padding:5px; text-align:center"><font color="#424949"><b> {{ username2}}'s count</b></font></th>
+            </tr>
+             </thead>
+            <tr>
+                <td>
+                   {{ practice_problems1 }}
+                </td>
+                <td>
+                    Practice Problems
+                </td>
+                <td>
+                    {{ practice_problems2 }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ long_challenge1 }}
+                </td>
+                <td>
+                    Long Challenge
+                </td>
+                <td>
+                    {{ long_challenge2 }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ cook_off1 }}
+                </td>
+                <td>
+                    Cook-Off
+                </td>
+                <td>
+                    {{ cook_off2 }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ lunchtime1 }}
+                </td>
+                <td>
+                    Lunchtime
+                </td>
+                <td>
+                    {{ lunchtime2 }}
+                </td>
+            </tr>
+
+        </table>
+
+
+        <br/>
+
+
+        </div>
+
+
+	</body>
+</html>

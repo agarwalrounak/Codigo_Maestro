@@ -1,0 +1,160 @@
+
+	a {
+		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		color: rgba(255, 255, 255, 0.75);
+		text-decoration: none;
+		font-size: 1.1em;
+
+		outline: 0;
+	}
+
+		a:hover {
+			color: #FFF;
+			border: none;
+		}
+
+
+
+#header {
+		background:#202024;
+		color: rgba(255, 255, 255, 0.75);
+		cursor: default;
+		height: 3.25em;
+		left: 0;
+		line-height: 3.25em;
+		position: fixed;
+		text-align: right;
+		top: 0;
+		width: 100%;
+		z-index: 10001;
+	}
+
+
+
+
+
+		#header .toggle span {
+			display: none;
+		}
+
+		#header > .logo {
+			display: inline-block;
+
+			height: inherit;
+			left: 1.25rem;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+		}
+
+			#header > .logo a {
+				font-size: 1.25rem;
+				color: #FFF;
+				text-decoration: none;
+			}
+
+			#header > .logo span {
+				font-weight: 300;
+				font-size: .75rem;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+
+
+
+* {
+	box-sizing: border-box;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+	color: #34495;
+}
+
+
+
+.Logo {
+	margin: 0;
+	font-size: 1.40em;
+	display: inline-block;
+}
+
+.main-nav {
+	margin-top: .5px;
+
+}
+.Logo a,
+.main-nav a {
+	padding: 10px 14px;
+	text-align: center;
+	display: block;
+	color:#FFF
+
+}
+
+.main-nav a {
+	font-size: 1.3em;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+
+
+
+.Header {
+	padding-top: .2em;
+	padding-bottom: .3em;
+	border: 1px solid #a2a2a2;
+	background-color: #202024;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(255,255,255,255.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(255,255,255,255.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	width: 100%;
+}
+
+
+/* =================================
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+	.Header,
+	.main-nav {
+		display: flex;
+	}
+	.Header {
+		flex-direction: column;
+		align-items: center;
+    	.Header{
+		width: 100%;
+		margin: 0 auto;
+		max-width: 1150px;
+	}
+	}
+
+}
+
+@media (min-width: 1025px) {
+	.Header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+}
